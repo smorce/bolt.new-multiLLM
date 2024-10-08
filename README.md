@@ -7,12 +7,18 @@ This project includes the following points
 
 Usage:
 1. run the following command
+```ps:
 pnpm install
+```
 
 2. Create “.env.local” in the project root and add the following definition
+```.env.local
 OPENAI_API_KEY=<YOUR OPENAI API KEY>
 ANTHROPIC_API_KEY=<YOUR ANTHROPIC API KEY>
 VITE_LOG_LEVEL=debug
+```
 
 3. When ready, run the following command in a powershell and you are good to go!
+```
 pnpm run start
+```
