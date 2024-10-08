@@ -7,3 +7,8 @@ export function getAPIKey(cloudflareEnv: Env) {
    */
   return env.ANTHROPIC_API_KEY || cloudflareEnv.ANTHROPIC_API_KEY;
 }
+
+export function getOpenAIAPIKey(cloudflareEnv: Env) {
+  return env.OPENAI_API_KEY || cloudflareEnv.OPENAI_API_KEY;
+}
+

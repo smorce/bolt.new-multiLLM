@@ -1,6 +1,6 @@
 import { streamText as _streamText, convertToCoreMessages } from 'ai';
-import { getAPIKey } from '~/lib/.server/llm/api-key';
-import { getAnthropicModel } from '~/lib/.server/llm/model';
+import { getAPIKey, getOpenAIAPIKey } from '~/lib/.server/llm/api-key';
+import { getAnthropicModel, getOpenAIModel } from '~/lib/.server/llm/model';
 import { MAX_TOKENS } from './constants';
 import { getSystemPrompt } from './prompts';
 
@@ -33,3 +33,16 @@ export function streamText(messages: Messages, env: Env, options?: StreamingOpti
     ...options,
   });
 }
+
+export function streamTextOpenAI(messages: Messages, env: Env, model: string, options?: StreamingOptions) {
+  return _streamText({
+    model: getOpenAIModel(model, getOpenAIAPIKey(env)),
+    system: getSystemPrompt(),
+    maxTokens: MAX_TOKENS,
+    messages: convertToCoreMessages(messages),
+    headers: {},
+    ...options,
+  });
+}
+
+
