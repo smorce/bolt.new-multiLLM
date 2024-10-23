@@ -14,7 +14,7 @@
     "test:watch": "vitest",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "start": "pnpm run build && powershell -Command \"$bindings = ./bindings.ps1; $command = \\\"wrangler pages dev ./build/client $bindings\\\"; echo $command; Invoke-Expression $command\"",
+    "start": "pnpm run build && ./bindings.sh | xargs wrangler pages dev ./build/client",
     "typecheck": "tsc",
     "typegen": "wrangler types",
     "preview": "pnpm run build && pnpm run start"
